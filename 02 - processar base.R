@@ -40,7 +40,13 @@ bases <- bases %>%
 bases <- bases %>%
   mutate(SALDO = str_replace_all(SALDO, fixed(","), ".") %>% as.numeric())
 
+# Escrever a base ---------------------------------------------------------
 
-# Escrever a base
 write.csv(bases, file = "data/balancetes.csv", row.names = F)
 saveRDS(bases, file = "data/balancetes.rds")
+zip(zipfile = "data/balancetes.zip", files = "data/balancetes.csv")
+
+
+
+
+
