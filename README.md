@@ -6,7 +6,7 @@ do site do Banco Central do Brasil.
 
 A base final com os dados já processados é o arquivo: `data/balancetes.rds`.
 Ele está no formato `rds` por questão de tamanho, o Github não aceita arquivos
-maiores de 100MB. 
+maiores de 100MB. Também está disponível uma versão comprimida `data/balancetes.zip`.
 
 Para lê-lo basta usar no R o comando:
 
