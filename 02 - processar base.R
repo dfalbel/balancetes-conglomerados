@@ -21,11 +21,11 @@ bases <- plyr::ldply(arqs, fread, .progress = "text")
 
 bases <- bases %>%
   mutate(
-    DATA = ifelse(is.na(DATA), `#DATA_BASE`, DATA),
-    COD_CONGL = ifelse(is.na(COD_CONGL), COD.CONGLOMERADO, COD_CONGL),
-    NOME_CONGL = ifelse(is.na(NOME_CONGL), `NOME CONGLOMERADO`, NOME_CONGL),
-    NOME_CONTA = ifelse(is.na(NOME_CONTA), `NOME CONTA`, NOME_CONTA),
-    TAXONOMIA = ifelse(is.na(TAXONOMIA), ATRIBUTO, TAXONOMIA)
+    DATA = ifelse(is.na(DATA), as.character(`#DATA_BASE`), as.character(DATA)) %>% str_trim(),
+    COD_CONGL = ifelse(is.na(COD_CONGL), as.character(COD.CONGLOMERADO), as.character(COD_CONGL)) %>% str_trim(),
+    NOME_CONGL = ifelse(is.na(NOME_CONGL), as.character(`NOME CONGLOMERADO`), as.character(NOME_CONGL)) %>% str_trim(),
+    NOME_CONTA = ifelse(is.na(NOME_CONTA), as.character(`NOME CONTA`), as.character(NOME_CONTA)) %>% str_trim(),
+    TAXONOMIA = ifelse(is.na(TAXONOMIA), as.character(ATRIBUTO), as.character(TAXONOMIA)) %>% str_trim()
   ) %>%
   select(-`#DATA_BASE`, 
          -COD.CONGLOMERADO,
